@@ -1,0 +1,239 @@
+@import '@glidejs/glide/dist/css/glide.core.min.css';
+@import '@glidejs/glide/dist/css/glide.theme.min.css';
+@import 'variables';
+@import 'product-card';
+
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  font-family: $main-font;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0;
+  background: linear-gradient(45deg, #8b6e54, #c2b5a9);
+
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  background-color: $secondary-color;
+  position: sticky;
+  top: 0;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+  z-index: 2;
+  margin-bottom: 2rem;
+  padding: 1rem;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    h1 {
+      color: $text-color;
+      font-size: 2rem;
+      margin: 0;
+      // -webkit-text-stroke: .1rem $secondary-color;  
+
+      @media  (max-width: 768px) {
+        font-size: 2.8rem;
+      }
+
+    }
+
+    img {
+      width: 2rem;
+      height: 2rem;
+
+      @media  (max-width: 768px) {
+        width: 2.7rem;
+        height: 2.7rem;
+      }
+    }
+  }
+ 
+ 
+ 
+
+}
+
+main {
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+ 
+}
+
+footer {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $secondary-color;
+  color: $text-color;
+  font-family: $main-font;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+.about-us {
+  width: 80%;
+  margin: 10px auto;
+  // padding: 50px 0;
+  text-align: center;
+  color: $text-color;
+  font-family: $main-font;
+
+  p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    text-align: justify;
+  }
+}
+
+.shine-button {
+ 
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px 30px;
+  margin: 16px auto;
+  position: relative;
+  overflow: hidden;
+  // border: 2px solid $secondary-color;
+  border-radius: 8px;
+  font-family: $main-font;
+  background: $primary-color;
+  color: $text-color;
+  font-size: 1.8rem;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+   
+
+  &::before {
+    content: "";
+    background: linear-gradient(90deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, .5));
+    height: 70px;
+    width: 50px;
+    position: absolute;
+    top: -8px;
+    left: -75px;
+    transform: skewX(-45deg);
+    animation: downUp 3s infinite ease-in-out  ;
+  }
+ 
+}
+ 
+  /* анимация */
+  @keyframes downUp { 
+    from {left: -75px;} 
+    20% {left: 250px;}
+    to {left: 250px;}
+  }
+
+// .shine-button:hover {
+//   background: #fe6637;
+//   color: #fff;
+// }
+
+ 
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $secondary-color;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+}
+
+.popup-content {
+  background-color: $text-color;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+   min-width: 300px;
+  max-width: 1100px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+
+  @media  (min-width: 1350px) {
+    flex-direction: row;
+  }
+
+  img {
+    align-self: center;
+    // max-width: 280px;
+    // max-height: 280px;
+     
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    @media  (min-width: 1350px) {
+      margin-bottom: 0;
+      margin-right: 1rem;
+    }
+  }
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+
+    p {
+      text-align: justify;
+    }
+
+    .shine-button {
+      margin-bottom: 0;
+    }
+  }
+  
+}
+
+.close-popup {
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  font-size: 2.8rem;
+  line-height: 2.8rem;
+  text-align: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: $primary-color;
+}
+
+// .close-popup:hover {
+//   color: $primary-color;
+// }
+
+.popup.show {
+  display: block;
+}
