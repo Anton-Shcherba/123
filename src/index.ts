@@ -26,19 +26,8 @@ const closePopupBtn = document.querySelector('.close-popup');
 const popup = document.getElementById('popup');
 const glidesWrap = document.getElementById('glides-wrap');
 
-let itMove = true;
-
-glidesWrap?.addEventListener('mousedown', (e) => {
-  if ((e.target as HTMLDivElement).closest('.product-card')) itMove = false;
-});
-
-glidesWrap?.addEventListener('mousemove', (e) => {
-  if ((e.target as HTMLDivElement).closest('.product-card')) itMove = true;
-});
-
-glidesWrap?.addEventListener('mouseup', (e) => {
+glidesWrap?.addEventListener('click', (e) => {
   if ((e.target as HTMLDivElement).closest('.product-card')) {
-    if (itMove) return;
     popup?.classList.add('show');
     document.body.style.overflow = 'hidden';
     glide1.pause();
