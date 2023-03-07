@@ -21,6 +21,27 @@ module.exports = {
         generator: {
           filename: 'images/[hash][ext]',
         },
+        use: {
+          loader: 'image-webpack-loader',
+          options: {
+            mozjpeg: {
+              progressive: true,
+            },
+            optipng: {
+              enabled: false,
+            },
+            pngquant: {
+              quality: [0.65, 0.9],
+              speed: 4,
+            },
+            gifsicle: {
+              interlaced: false,
+            },
+            webp: {
+              quality: 75,
+            },
+          },
+        },
       },
       {
         test: /\.html$/i,
